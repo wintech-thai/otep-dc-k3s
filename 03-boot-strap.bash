@@ -22,6 +22,7 @@ helm template kube-prometheus-crds \
   --version 80.5.0 \
   --include-crds \
   --namespace monitoring \
+  -f prometheus-values.yaml \
   | kubectl apply -f - --server-side --force-conflicts
 
 cd ..
