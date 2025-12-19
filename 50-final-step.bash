@@ -24,4 +24,6 @@ helm template kube-prometheus-crds \
   -f prometheus-values.yaml \
   | kubectl apply -f - --server-side --force-conflicts
 
+kubectl apply -f alm-config.yaml
+
 cd ..
