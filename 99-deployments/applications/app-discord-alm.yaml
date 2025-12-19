@@ -16,7 +16,7 @@ spec:
       source:
         repoURL: https://github.com/wintech-thai/otep-dc-k3s.git
         targetRevision: "{{name}}" #Based on environment
-        path: 'manifests/discord-alm'
+        path: '99-deployments/manifests/discord-alm'
       destination:
         name: in-cluster
         namespace: discord-alm
