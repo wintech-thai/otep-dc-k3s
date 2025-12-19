@@ -7,6 +7,14 @@ cd 01-bootstrap
 kubectl apply -f argocd-app.yaml
 kubectl apply -f argocd-ing.yaml
 
+kubectl apply -f <(cat <<EOF
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+EOF
+)
+
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 helm template kube-prometheus-crds \
