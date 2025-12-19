@@ -22,6 +22,7 @@ services:
       - .:/output
       - ./addons/initial-secrets.yaml:/var/lib/rancher/k3s/server/manifests/initial-secrets.yaml
       - ./addons/addons-argocd.yaml:/var/lib/rancher/k3s/server/manifests/addons-argocd.yaml
+      - ./addons/addons-ingress.yaml:/var/lib/rancher/k3s/server/manifests/addons-ingress.yaml
       - k3s-server:/var/lib/rancher/k3s
     ports:
     - 6443:6443 # For kubectl

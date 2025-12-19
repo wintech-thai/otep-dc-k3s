@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/wintech-thai/otep-dc-k3s.git
     targetRevision: 'main' #Should be based on environment
-    path: 'applications'
+    path: 'deployments/applications'
 
   # Destination cluster and namespace to deploy the application
   destination:
@@ -32,7 +32,7 @@ metadata:
     custom: "true"
 type: Opaque
 stringData:
-  name: 'production'
+  name: 'main'
   server: https://notused
   config: ""
 ---
