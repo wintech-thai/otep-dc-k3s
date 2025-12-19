@@ -25,6 +25,7 @@ services:
       - ./addons/addons-argocd.yaml:/var/lib/rancher/k3s/server/manifests/addons-argocd.yaml
       - ./addons/addons-ingress.yaml:/var/lib/rancher/k3s/server/manifests/addons-ingress.yaml
       - ./addons/addons-external-secret.yaml:/var/lib/rancher/k3s/server/manifests/addons-external-secret.yaml
+      - ./addons/addons-cert-manager.yaml:/var/lib/rancher/k3s/server/manifests/addons-cert-manager.yaml
   
       - k3s-server:/var/lib/rancher/k3s
     ports:
