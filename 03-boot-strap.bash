@@ -13,7 +13,7 @@ helm template kube-prometheus-crds \
   prometheus-community/kube-prometheus-stack \
   --version 80.5.0 \
   --include-crds \
-  | kubectl apply -f -
+  | kubectl apply -f - --server-side
 
 
 cd ..
