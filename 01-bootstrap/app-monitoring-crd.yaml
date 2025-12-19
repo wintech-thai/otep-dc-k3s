@@ -1,23 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monitoring-crds
+  name: kube-prometheus-crds
   namespace: argocd
 spec:
-  destination:
-    name: in-cluster
-    namespace: monitoring
   project: default
+
   source:
-    repoURL: https://github.com/prometheus-community/helm-charts.git
-    path: charts/kube-prometheus-stack/charts/crds/
-    targetRevision: kube-prometheus-stack-80.5.0 #Version should match Chart.yaml in "monitoring" folder
+    repoURL: https://prometheus-community.github.io/helm-charts
+    chart: kube-prometheus-stack
+    targetRevision: 80.5.0
     directory:
       recurse: true
+      jsonnet: {}
+
+    # บอก ArgoCD ให้ apply เฉพาะ CRDs folder
+    path: crds
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-      - Replace=true
     automated:
-      prune: true
+      prune: false   # CRD ไม่ควร prune
       selfHeal: true
