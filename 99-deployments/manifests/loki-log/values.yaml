@@ -26,7 +26,7 @@ loki-stack:
     fullnameOverride: loki-log
     persistence:
       enabled: false
-    config:
+    config: {}
     alerting_groups: []
 
   grafana:
