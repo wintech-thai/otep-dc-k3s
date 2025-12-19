@@ -14,3 +14,6 @@ alertmanager:
   alertmanagerSpec:
     alertmanagerConfigMatcherStrategy:
       type: None
+grafana:
+  testFramework:
+    enabled: false
