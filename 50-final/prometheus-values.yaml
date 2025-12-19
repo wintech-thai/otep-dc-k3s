@@ -3,16 +3,17 @@ fullnameOverride: prometheus
 prometheus-node-exporter:
   hostRootFsMount:
     enabled: false
+
 grafana:
   admin:
     # Initially created by ArgoCD
     existingSecret: "grafana-credentials"
     userKey: GRAFANA_USER
     passwordKey: GRAFANA_PASSWORD
+  testFramework:
+    enabled: false
+
 alertmanager:
   alertmanagerSpec:
     alertmanagerConfigMatcherStrategy:
       type: None
-grafana:
-  testFramework:
-    enabled: false
