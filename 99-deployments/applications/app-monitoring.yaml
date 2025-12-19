@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: loki-log
+  name: monitoring
 spec:
   generators:
   - clusters:
@@ -10,7 +10,7 @@ spec:
           custom: "true"
   template:
     metadata:
-      name: 'loki-log-{{name}}'
+      name: 'monitoring-{{name}}'
     spec:
       project: "default"
       source:
@@ -24,7 +24,7 @@ spec:
             - values-{{name}}.yaml
       destination:
         name: in-cluster
-        namespace: loki-log
+        namespace: monitoring
       syncPolicy:
         automated:
           selfHeal: false
