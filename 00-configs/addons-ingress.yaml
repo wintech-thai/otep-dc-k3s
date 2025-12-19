@@ -16,7 +16,7 @@ spec:
   valuesContent: |-
     controller:
       service:
-        externalTrafficPolicy: "Local" #To make real-ip works, need to restart pod
+        #externalTrafficPolicy: "Local" #To make real-ip works, need to restart pod
         enabled: true
         type: NodePort
         nodePorts:
