@@ -1,0 +1,13 @@
+
+postgresql:
+  enabled: true
+  fullnameOverride: postgresql
+  auth:
+    database: otep-dev
+    existingSecret: postgres-secret
+    secretKeys:
+      adminPasswordKey: adminPasswordKey
+  primary:
+    persistence:
+      size: 5Gi
+  
