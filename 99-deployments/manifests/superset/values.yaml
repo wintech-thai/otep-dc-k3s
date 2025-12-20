@@ -1,0 +1,51 @@
+domain: superset.otep-prod.dev-hubs.com
+
+superset:
+  enabled: true
+  fullnameOverride: superset
+
+  extraSecretEnv:
+    SUPERSET_SECRET_KEY:
+      valueFrom:
+        secretKeyRef:
+          name: superset-secret
+          key: SUPERSET_SECRET_KEY
+
+  configOverrides:
+    cors_setting: |
+      TALISMAN_ENABLED = False
+      OVERRIDE_HTTP_HEADERS = { "X-Frame-Options": "ALLOWALL" }
+      ENABLE_CORS = True
+      CORS_OPTIONS = { 
+        'supports_credentials': True, 
+        'allow_headers': ['*'], 
+        'resources':['*'], 
+        'origins': ['*']
+      }
+
+      FEATURE_FLAGS = {
+        'DASHBOARD_NATIVE_FILTERS_SET_COLOR_SCHEME': True
+      }
+
+  bootstrapScript: |
+    #!/bin/bash
+
+    # Install system-level dependencies
+    apt-get update && apt-get install -y \
+      python3-dev \
+      default-libmysqlclient-dev \
+      build-essential \
+      pkg-config
+
+    # Install required Python packages
+    pip install \
+      authlib \
+      elasticsearch-dbapi \
+      psycopg2-binary \
+      mysqlclient \
+      apache-superset[cors] \
+
+    # Create bootstrap file if it doesn't exist
+    if [ ! -f ~/bootstrap ]; then
+      echo "Running Superset with uid {{ .Values.runAsUser }}" > ~/bootstrap
+    fi
