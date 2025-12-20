@@ -50,9 +50,9 @@ superset:
       echo "Running Superset with uid {{ .Values.runAsUser }}" > ~/bootstrap
     fi
 
-postgresql:
-  enabled: true
-  image:
-    registry: asia-southeast1-docker.pkg.dev
-    repository: its-artifact-commons/utils/postgresql
-    tag: "v16.2.0-2"
+  postgresql:
+    enabled: true
+    image:
+      registry: asia-southeast1-docker.pkg.dev
+      repository: its-artifact-commons/utils/postgresql
+      tag: "v16.2.0-2"
