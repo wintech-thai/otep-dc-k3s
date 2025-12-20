@@ -1,0 +1,8 @@
+domain: pgweb.otep-prod.dev-hubs.com
+
+### PG Web ###
+pgweb:
+  enabled: true
+  nameOverride: pgweb
+  ingress:
+    enabled: false
