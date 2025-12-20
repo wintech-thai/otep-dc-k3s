@@ -56,3 +56,7 @@ superset:
       registry: asia-southeast1-docker.pkg.dev
       repository: its-artifact-commons/utils/postgresql
       tag: "v16.2.0-2"
+
+  redis:
+    image:
+      repository: bitnamilegacy/redis
