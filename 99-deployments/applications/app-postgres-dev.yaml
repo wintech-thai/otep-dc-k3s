@@ -24,7 +24,7 @@ spec:
             - values-{{name}}.yaml
       destination:
         name: in-cluster
-        namespace: argocd
+        namespace: postgresql-dev
       syncPolicy:
         automated:
           selfHeal: true
