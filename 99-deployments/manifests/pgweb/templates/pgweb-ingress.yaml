@@ -9,7 +9,7 @@ spec:
   tls:
     - hosts:
       - {{ .Values.domain }}
-      #secretName: pgweb-cert
+      secretName: pgweb-cert
   rules:
     - host: {{ .Values.domain }}
       http:
