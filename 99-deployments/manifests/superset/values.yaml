@@ -11,6 +11,12 @@ superset:
           name: superset-secret
           key: SUPERSET_SECRET_KEY
 
+    ADMIN_PASSWORD:
+      valueFrom:
+        secretKeyRef:
+          name: superset-admin-secret
+          key: password
+
   configOverrides:
     cors_setting: |
       TALISMAN_ENABLED = False
@@ -26,13 +32,6 @@ superset:
       FEATURE_FLAGS = {
         'DASHBOARD_NATIVE_FILTERS_SET_COLOR_SCHEME': True
       }
-
-  extraSecretEnv:
-    ADMIN_PASSWORD:
-      valueFrom:
-        secretKeyRef:
-          name: superset-admin-secret
-          key: password
 
   bootstrapScript: |
     #!/bin/bash
