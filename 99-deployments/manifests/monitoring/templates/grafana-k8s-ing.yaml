@@ -9,6 +9,7 @@ spec:
   tls:
     - hosts:
       - {{ .Values.domain }}
+      secretName: grafana-k8s-cert
   rules:
     - host: {{ .Values.domain }}
       http:

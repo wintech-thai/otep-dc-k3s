@@ -9,6 +9,7 @@ spec:
   tls:
     - hosts:
       - {{ .Values.domain }}
+      secretName: grafana-loki-cert
   rules:
     - host: {{ .Values.domain }}
       http:
