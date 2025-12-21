@@ -9,7 +9,7 @@ spec:
   tls:
     - hosts:
       - {{ .Values.domain }}
-      #secretName: superset-cert
+      secretName: superset-cert
   rules:
     - host: {{ .Values.domain }}
       http:
