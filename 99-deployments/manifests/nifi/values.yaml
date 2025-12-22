@@ -4,18 +4,18 @@ nifi:
   enabled: true
   nameOverride: nifi
 
-  #extraEnv:
-  #  - name: SINGLE_USER_CREDENTIALS_USERNAME
-  #    valueFrom:
-  #      secretKeyRef:
-  #        name: nifi-credentials
-  #        key: NIFI_USER
+  extraEnv:
+    - name: SINGLE_USER_CREDENTIALS_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: nifi-credentials
+          key: NIFI_USER
 
-  #  - name: SINGLE_USER_CREDENTIALS_PASSWORD
-  #    valueFrom:
-  #      secretKeyRef:
-  #        name: nifi-credentials
-  #        key: NIFI_PASSWORD
+    - name: SINGLE_USER_CREDENTIALS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: nifi-credentials
+          key: NIFI_PASSWORD
 
   ingress:
     enabled: true
