@@ -12,6 +12,8 @@ nifi:
     enabled: true
     ingressClassName: nginx
     hostName: nifi.otep-prod.dev-hubs.com
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 
   global:
     nifi:
