@@ -4,10 +4,6 @@ nifi:
   enabled: true
   nameOverride: nifi
 
-  #extraEnv:
-  #  - name: NIFI_WEB_PROXY_HOST
-  #    value: "nifi.otep-prod.dev-hubs.com:443"
-
   ingress:
     enabled: true
     ingressClassName: nginx
@@ -18,6 +14,19 @@ nifi:
       - secretName: nifi-cert
         hosts:
           - nifi.otep-prod.dev-hubs.com
+
+    extraEnv:
+      - name: SINGLE_USER_CREDENTIALS_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: nifi-credentials
+            key: NIFI_USER
+
+      - name: SINGLE_USER_CREDENTIALS_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: nifi-credentials
+            key: NIFI_PASSWORD
 
   global:
     nifi:
