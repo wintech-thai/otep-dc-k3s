@@ -17,7 +17,7 @@ nifi:
 
   global:
     nifi:
-      nodeCount: 3
+      nodeCount: 1
 
   resources:
     requests:
