@@ -23,19 +23,8 @@ nifi:
     min: 256m
     max: 512m
 
-  volumeClaims:
-    config:
-      storageClass: "local-path"
-    state:
-      storageClass: "local-path"
-    flowfile:
-      storageClass: "local-path"
-    content:
-      storageClass: "local-path"
-    provenance:
-      storageClass: "local-path"
-    logs:
-      storageClass: "local-path"
+  persistence:
+    storageClass: "" # default
 
   zookeeper:
     image:
@@ -43,3 +32,19 @@ nifi:
       repository: bitnamilegacy/zookeeper
       tag: 3.8.2
       pullPolicy: IfNotPresent
+
+    global:
+      security:
+        allowInsecureImages: true
+
+    command:
+      - /bin/bash
+      - -ec
+      - |
+        # ถ้าไม่มี zoo_sample.cfg ให้ copy zoo.cfg ตั้งชื่อแทน
+        if [ ! -f /opt/bitnami/zookeeper/conf/zoo_sample.cfg ]; then
+          cp /opt/bitnami/zookeeper/conf/zoo.cfg /opt/bitnami/zookeeper/conf/zoo_sample.cfg
+        fi
+
+        # ไปต่อ command เดิมของ chart
+        exec /entrypoint.sh /run.sh
