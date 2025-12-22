@@ -25,13 +25,16 @@ nifi:
 
   volumeClaims:
     config:
-      size: 1Gi
       storageClass: "local-path"
     state:
-      size: 2Gi
+      storageClass: "local-path"
+    flowfile:
       storageClass: "local-path"
     content:
-      size: 5Gi
+      storageClass: "local-path"
+    provenance:
+      storageClass: "local-path"
+    logs:
       storageClass: "local-path"
 
   zookeeper:
