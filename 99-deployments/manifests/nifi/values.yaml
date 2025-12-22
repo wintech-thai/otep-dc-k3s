@@ -3,12 +3,16 @@ domain: nifi.otep-prod.dev-hubs.com
 nifi:
   enabled: true
   nameOverride: nifi
+
+  ingress:
+    enabled: false
+
   global:
     nifi:
       nodeCount: 1
-    basic:
-      admin_username: "admin"
-      admin_password: "devpassword123"
+    #basic:
+    #  admin_username: "admin"
+    #  admin_password: "change-this"
 
   resources:
     requests:
@@ -26,3 +30,10 @@ nifi:
       size: 2Gi
     content:
       size: 5Gi
+
+  zookeeper:
+    image:
+      registry: docker.io
+      repository: bitnamilegacy/zookeeper
+      tag: 3.8.2
+      pullPolicy: IfNotPresent
