@@ -4,6 +4,10 @@ nifi:
   enabled: true
   nameOverride: nifi
 
+  extraEnv:
+    - name: NIFI_WEB_PROXY_HOST
+      value: "nifi.otep-prod.dev-hubs.com:443"
+
   ingress:
     enabled: false
 
@@ -36,15 +40,3 @@ nifi:
     global:
       security:
         allowInsecureImages: true
-
-    #command:
-    #  - /bin/bash
-    #  - -ec
-    #  - |
-    #    # ถ้าไม่มี zoo_sample.cfg ให้ copy zoo.cfg ตั้งชื่อแทน
-    #    if [ ! -f /opt/bitnami/zookeeper/conf/zoo_sample.cfg ]; then
-    #      cp /opt/bitnami/zookeeper/conf/zoo.cfg /opt/bitnami/zookeeper/conf/zoo_sample.cfg
-    #    fi
-
-    #    # ไปต่อ command เดิมของ chart
-    #    exec /entrypoint.sh /run.sh
