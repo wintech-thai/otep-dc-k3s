@@ -26,10 +26,13 @@ nifi:
   volumeClaims:
     config:
       size: 1Gi
+      storageClass: "local-path"
     state:
       size: 2Gi
+      storageClass: "local-path"
     content:
       size: 5Gi
+      storageClass: "local-path"
 
   zookeeper:
     image:
