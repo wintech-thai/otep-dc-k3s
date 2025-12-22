@@ -9,9 +9,9 @@ nifi:
       value: "nifi.otep-prod.dev-hubs.com:443"
 
   ingress:
-    enabled: true
-    ingressClassName: nginx
-    hostName: nifi.otep-prod.dev-hubs.com
+    enabled: false
+    #ingressClassName: nginx
+    #hostName: nifi.otep-prod.dev-hubs.com
 
   global:
     nifi:
