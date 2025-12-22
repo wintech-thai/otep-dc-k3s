@@ -1,0 +1,12 @@
+apiVersion: v2
+name: helm-nifi 
+version: 1.0.0
+appVersion: 1.23.0
+description: A Helm chart wrapper for Nifi 
+
+dependencies:
+  - name: "nifi"
+    alias: nifi
+    condition: nifi.enabled
+    repository: "https://sakkiii.github.io/apache-nifi-helm"
+    version: "1.0.0"

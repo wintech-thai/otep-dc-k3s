@@ -1,0 +1,28 @@
+domain: nifi.otep-prod.dev-hubs.com
+
+nifi:
+  enabled: true
+  nameOverride: nifi
+  global:
+    nifi:
+      nodeCount: 1
+    basic:
+      admin_username: "admin"
+      admin_password: "devpassword123"
+
+  resources:
+    requests:
+      cpu: 200m
+      memory: 1Gi
+
+  jvmHeap:
+    min: 256m
+    max: 512m
+
+  volumeClaims:
+    config:
+      size: 1Gi
+    state:
+      size: 2Gi
+    content:
+      size: 5Gi
