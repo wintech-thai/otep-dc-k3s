@@ -14,6 +14,10 @@ nifi:
     hostName: nifi.otep-prod.dev-hubs.com
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    tls:
+      - secretName: nifi-cert
+        hosts:
+          - nifi.otep-prod.dev-hubs.com
 
   global:
     nifi:
