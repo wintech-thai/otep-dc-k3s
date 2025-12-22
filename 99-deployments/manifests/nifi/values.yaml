@@ -4,9 +4,9 @@ nifi:
   enabled: true
   nameOverride: nifi
 
-  extraEnv:
-    - name: NIFI_WEB_PROXY_HOST
-      value: "nifi.otep-prod.dev-hubs.com:443"
+  #extraEnv:
+  #  - name: NIFI_WEB_PROXY_HOST
+  #    value: "nifi.otep-prod.dev-hubs.com:443"
 
   ingress:
     enabled: true
