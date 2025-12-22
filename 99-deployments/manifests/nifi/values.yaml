@@ -10,8 +10,8 @@ nifi:
 
   ingress:
     enabled: false
-    #ingressClassName: nginx
-    #hostName: nifi.otep-prod.dev-hubs.com
+    ingressClassName: nginx
+    hostName: nifi.otep-prod.dev-hubs.com
 
   global:
     nifi:
