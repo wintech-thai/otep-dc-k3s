@@ -4,19 +4,6 @@ nifi:
   enabled: true
   nameOverride: nifi
 
-  extraEnv:
-    - name: SINGLE_USER_CREDENTIALS_USERNAME
-      valueFrom:
-        secretKeyRef:
-          name: nifi-credentials
-          key: NIFI_USER
-
-    - name: SINGLE_USER_CREDENTIALS_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: nifi-credentials
-          key: NIFI_PASSWORD
-
   ingress:
     enabled: true
     ingressClassName: nginx
@@ -31,9 +18,15 @@ nifi:
   global:
     nifi:
       nodeCount: 1
-    #basic:
-    #  admin_username: "admin"
-    #  admin_password: "change-this"
+      web:
+        auth:
+          singleUser:
+            enabled: true
+            # Assuming the chart uses parameters similar to these to reference a secret
+            admin:
+              username: admin
+              existingSecret: nifi-credentials
+              secretKey: NIFI_PASSWORD
 
   resources:
     requests:
