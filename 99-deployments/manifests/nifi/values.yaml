@@ -17,16 +17,7 @@ nifi:
 
   global:
     nifi:
-      nodeCount: 1
-      web:
-        auth:
-          singleUser:
-            enabled: true
-            # Assuming the chart uses parameters similar to these to reference a secret
-            admin:
-              username: admin
-              existingSecret: nifi-credentials
-              secretKey: NIFI_PASSWORD
+      nodeCount: 3
 
   resources:
     requests:
