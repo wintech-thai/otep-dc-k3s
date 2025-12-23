@@ -1,4 +1,5 @@
 ---
 nifikop:
+  rbacEnable: true
   rbac:
     create: true
