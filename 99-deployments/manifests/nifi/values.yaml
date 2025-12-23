@@ -29,7 +29,7 @@ nifi:
     max: 512m
 
   persistence:
-    storageClass: "" # default
+    storageClass: "local-path" # default
 
   zookeeper:
     image:
