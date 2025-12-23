@@ -1,5 +1,4 @@
 ---
 nifikop:
   rbacEnable: true
-  rbac:
-    create: true
+  namespaces: [ 'nifi-v2' ]
