@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p addons
+
 SRC_FILE=.env
 DST_FILE=addons/initial-secrets.yaml
 SECRET=initial-secret
