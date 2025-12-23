@@ -10,10 +10,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - argocd-temp.otep-prod.dev-hubs.com
+      - argocd-temp.otep.triple-t.co
       #secretName: argocd-cert
   rules:
-    - host: argocd-temp.otep-prod.dev-hubs.com
+    - host: argocd-temp.otep.triple-t.co
       http:
         paths:
           - path: /

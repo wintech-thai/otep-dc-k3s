@@ -1,4 +1,4 @@
-domain: superset.otep-prod.dev-hubs.com
+domain: superset.otep.triple-t.co
 
 superset:
   enabled: true

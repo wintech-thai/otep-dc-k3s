@@ -1,11 +1,11 @@
-domain: grafana-loki.otep-prod.dev-hubs.com
+domain: grafana-loki.otep.triple-t.co
 
 loki-stack:
   grafana:
     grafana.ini:
       server:
-        root_url: grafana-loki.otep-prod.dev-hubs.com
+        root_url: grafana-loki.otep.triple-t.co
     grafana.ini:
       server:
-        root_url: https://grafana-loki.otep-prod.dev-hubs.com
-        domain: grafana-loki.otep-prod.dev-hubs.com
+        root_url: https://grafana-loki.otep.triple-t.co
+        domain: grafana-loki.otep.triple-t.co

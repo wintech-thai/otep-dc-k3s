@@ -1,4 +1,4 @@
-domain: nifi.otep-prod.dev-hubs.com
+domain: nifi.otep.triple-t.co
 
 nifi:
   enabled: true
@@ -7,13 +7,13 @@ nifi:
   ingress:
     enabled: true
     ingressClassName: nginx
-    hostName: nifi.otep-prod.dev-hubs.com
+    hostName: nifi.otep.triple-t.co
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     tls:
       - secretName: nifi-cert
         hosts:
-          - nifi.otep-prod.dev-hubs.com
+          - nifi.otep.triple-t.co
 
   global:
     nifi:
