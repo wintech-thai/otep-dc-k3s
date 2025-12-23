@@ -20,12 +20,13 @@ services:
     - K3S_KUBECONFIG_MODE=666
     volumes:
       - .:/output
+      - ./addons:/var/lib/rancher/k3s/server/manifests
   
-      - ./addons/initial-secrets.yaml:/var/lib/rancher/k3s/server/manifests/initial-secrets.yaml
-      - ./addons/addons-argocd.yaml:/var/lib/rancher/k3s/server/manifests/addons-argocd.yaml
-      - ./addons/addons-ingress.yaml:/var/lib/rancher/k3s/server/manifests/addons-ingress.yaml
-      - ./addons/addons-external-secret.yaml:/var/lib/rancher/k3s/server/manifests/addons-external-secret.yaml
-      - ./addons/addons-cert-manager.yaml:/var/lib/rancher/k3s/server/manifests/addons-cert-manager.yaml
+      #- ./addons/initial-secrets.yaml:/var/lib/rancher/k3s/server/manifests/initial-secrets.yaml
+      #- ./addons/addons-argocd.yaml:/var/lib/rancher/k3s/server/manifests/addons-argocd.yaml
+      #- ./addons/addons-ingress.yaml:/var/lib/rancher/k3s/server/manifests/addons-ingress.yaml
+      #- ./addons/addons-external-secret.yaml:/var/lib/rancher/k3s/server/manifests/addons-external-secret.yaml
+      #- ./addons/addons-cert-manager.yaml:/var/lib/rancher/k3s/server/manifests/addons-cert-manager.yaml
   
       - k3s-server:/var/lib/rancher/k3s
     ports:
