@@ -9,7 +9,7 @@ postgresql:
       adminPasswordKey: adminPasswordKey
   primary:
     persistence:
-      size: 5Gi
+      size: 15Gi
     resources:
       requests:
         memory: "1Gi"
