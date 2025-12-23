@@ -5,9 +5,9 @@ metadata:
 spec:
   replicas: 1
 
-  #image:
-  #  repository: apache/nifi
-  #  tag: 1.25.0
+  image:
+    repository: apache/nifi
+    tag: 1.25.0
 
   security:
     initialAdminIdentity: admin
