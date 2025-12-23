@@ -1,9 +1,14 @@
 apiVersion: nifi.konpyutaika.com/v1
 kind: NifiCluster
 metadata:
-  name: nifi1
+  name: nifi
+  namespace: nifi
 spec:
   replicas: 1
+
+  nodeConfig:
+    - id: node
+      nodeCount: 1
 
   image:
     repository: apache/nifi
