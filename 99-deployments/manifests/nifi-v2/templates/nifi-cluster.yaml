@@ -1,7 +1,7 @@
 apiVersion: nifi.konpyutaika.com/v1
 kind: NifiCluster
 metadata:
-  name: nifi
+  name: nifi1
 spec:
   replicas: 1
 
