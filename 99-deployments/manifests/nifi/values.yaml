@@ -15,6 +15,22 @@ nifi:
         hosts:
           - nifi.otep.triple-t.co
 
+  persistence:
+    enabled: true
+    storageClass: local-path
+    data:
+      size: 10Gi
+      storageClass: "local-path"
+    flowfile:
+      size: 5Gi
+      storageClass: "local-path"
+    content:
+      size: 5Gi
+      storageClass: "local-path"
+    provenance:
+      size: 5Gi
+      storageClass: "local-path"
+
   global:
     nifi:
       nodeCount: 1
@@ -27,9 +43,6 @@ nifi:
   jvmHeap:
     min: 256m
     max: 512m
-
-  persistence:
-    storageClass: "local-path" # default
 
   zookeeper:
     image:
