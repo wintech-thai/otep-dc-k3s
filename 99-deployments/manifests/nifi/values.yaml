@@ -15,20 +15,18 @@ nifi:
         hosts:
           - nifi.otep.triple-t.co
 
-  persistence:
-    enabled: true
-    storageClass: local-path
-    data:
-      size: 10Gi
+  volumeClaims:
+    config:
+      storageClass: "local-path"
+    state:
       storageClass: "local-path"
     flowfile:
-      size: 5Gi
       storageClass: "local-path"
     content:
-      size: 5Gi
       storageClass: "local-path"
     provenance:
-      size: 5Gi
+      storageClass: "local-path"
+    logs:
       storageClass: "local-path"
 
   global:
