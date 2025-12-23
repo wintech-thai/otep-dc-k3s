@@ -8,5 +8,5 @@ dependencies:
   - name: "nifikop"
     alias: nifikop
     condition: nifikop.enabled
-    repository: "https://konpyutaika.github.io/nifikop/"
+    repository: "oci://ghcr.io/konpyutaika/helm-charts/nifikop"
     version: "0.15.0"
