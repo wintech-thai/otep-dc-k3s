@@ -40,7 +40,7 @@ nifi:
       client_id: "otep-sso"
       client_secret: "riB5JLPYmQ0aAUoehnGKTMrayOi05oiD" # TODO : เปลี่ยนเป็น secret
       claim_identifying_user: "preferred_username"
-      initial_admin_identity: "pjame.fb@gmail.com"
+      initial_admin_identity: "seubpong.mon"
 
   resources:
     requests:
