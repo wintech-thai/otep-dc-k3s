@@ -61,3 +61,29 @@ nifi:
     global:
       security:
         allowInsecureImages: true
+
+  logbackConfig: |
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+
+      <appender name="APP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${org.apache.nifi.bootstrap.config.log.dir}/nifi-app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+          <fileNamePattern>${org.apache.nifi.bootstrap.config.log.dir}/nifi-app_%d{yyyy-MM-dd}.log</fileNamePattern>
+          <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+          <pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} %-5level [%thread] %logger - %msg%n</pattern>
+        </encoder>
+      </appender>
+
+      <root level="INFO">
+        <appender-ref ref="APP_FILE"/>
+      </root>
+
+      <!-- 🔍 OIDC + Auth DEBUG -->
+      <logger name="org.apache.nifi.web.security.oidc" level="DEBUG"/>
+      <logger name="org.apache.nifi.web.security" level="DEBUG"/>
+      <logger name="org.apache.nifi.authorization" level="DEBUG"/>
+
+    </configuration>
