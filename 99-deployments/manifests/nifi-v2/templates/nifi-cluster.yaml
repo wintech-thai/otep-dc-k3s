@@ -1,25 +1,61 @@
 apiVersion: nifi.konpyutaika.com/v1
 kind: NifiCluster
 metadata:
-  name: nifi
+  name: simplenifi
 spec:
-  type: internal
-  clusterManager: kubernetes
-
+  service:
+    headlessEnabled: true
+  zkAddress: 'zookeepercluster-client.zookeeper:2181'
+  zkPath: '/simplenifi'
+  clusterImage: 'apache/nifi:1.11.3'
+  oneNifiNodePerNode: false
   nodeConfigGroups:
-    default:
-      image: apache/nifi:1.25.0
-      service:
-        type: ClusterIP
-      #pod:
-      #  terminationGracePeriodSeconds: 30
-
+    default_group:
+      isNode: true
+      podMetadata:
+        annotations:
+          node-annotation: "node-annotation-value"
+        labels:
+          node-label: "node-label-value"
+      #externalVolumeConfigs:
+      #  - name: example-volume
+      #    mountPath: "/opt/nifi/example"
+      #    secret:
+      #      secretName: "raw-controller"
+      storageConfigs:
+        - mountPath: '/opt/nifi/nifi-current/logs'
+          name: logs
+          pvcSpec:
+            accessModes:
+              - ReadWriteOnce
+            storageClassName: 'local-path'
+            resources:
+              requests:
+                storage: 10Gi
+      serviceAccountName: 'default'
+      resourcesRequirements:
+        limits:
+          cpu: '2'
+          memory: 3Gi
+        requests:
+          cpu: '1'
+          memory: 1Gi
   nodes:
     - id: 1
-      nodeConfigGroup: default
-
+      nodeConfigGroup: 'default_group'
+    #- id: 2
+    #  nodeConfigGroup: 'default_group'
+  propagateLabels: true
+  nifiClusterTaskSpec:
+    retryDurationMinutes: 10
   listenersConfig:
     internalListeners:
-      - name: http
-        type: http
+      - type: 'http'
+        name: 'http'
         containerPort: 8080
+      - type: 'cluster'
+        name: 'cluster'
+        containerPort: 6007
+      - type: 's2s'
+        name: 's2s'
+        containerPort: 10000
