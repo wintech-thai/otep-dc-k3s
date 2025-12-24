@@ -1,5 +1,4 @@
-envAlias: production
-domain: keycloak.rtarf-prod.its-software-services.com
+domain: keycloak.otep.triple-t.co
 
 keycloak:
   enabled: true
@@ -21,9 +20,15 @@ keycloak:
     passwordSecretKey: "keycloak-admin-password"
 
   postgresql:
+    enabled: true  
     auth:
       username: "bn_keycloak"
       password: "bn_keycloak" #Do not change (If need to change, must remove the PVC)
+    persistence:
+      size: 10Gi
+    image:
+      repository: bitnamilegacy/postgresql
+      tag: "11.14.0"
 
   extraVolumes: []
 
