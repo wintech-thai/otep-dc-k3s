@@ -52,6 +52,9 @@ keycloak:
     - name: KC_HOSTNAME_STRICT
       value: "false"
 
+    - name: KC_HOSTNAME_STRICT_HTTPS
+      value: "true"  # บังคับให้สร้าง URL เป็น https เสมอ
+
     - name: KEYCLOAK_USER
       valueFrom:
         secretKeyRef:
