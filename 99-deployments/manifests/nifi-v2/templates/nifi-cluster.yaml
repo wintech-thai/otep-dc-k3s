@@ -6,7 +6,7 @@ spec:
   type: internal
 
   nodes:
-    - id: node1
+    - id: 1
 
   listenersConfig:
     internalListeners:
