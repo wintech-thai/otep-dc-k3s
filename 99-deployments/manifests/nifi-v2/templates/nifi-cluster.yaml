@@ -11,8 +11,8 @@ spec:
       image: apache/nifi:1.25.0
       service:
         type: ClusterIP
-      pod:
-        terminationGracePeriodSeconds: 30
+      #pod:
+      #  terminationGracePeriodSeconds: 30
 
   nodes:
     - id: 1
