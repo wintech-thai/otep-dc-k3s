@@ -42,7 +42,13 @@ keycloak:
 
     - name: KC_HOSTNAME
       value: keycloak.otep.triple-t.co
-    
+
+    - name: KC_HOSTNAME_URL
+      value: https://keycloak.otep.triple-t.co
+
+    - name: KC_HOSTNAME_ADMIN_URL
+      value: https://keycloak.otep.triple-t.co
+
     - name: KC_HOSTNAME_STRICT
       value: "false"
 
