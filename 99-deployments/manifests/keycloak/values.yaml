@@ -51,13 +51,6 @@ keycloak:
     - name: KC_HOSTNAME_STRICT
       value: "false"
 
-  extraEnv: |
-    - name: KEYCLOAK_LOGLEVEL
-      value: DEBUG
-
-    - name: PROXY_ADDRESS_FORWARDING
-      value: "true"
-
     - name: KEYCLOAK_USER
       valueFrom:
         secretKeyRef:
@@ -69,10 +62,3 @@ keycloak:
         secretKeyRef:
           name: keycloak-credentials
           key: keycloak-admin-password
-
-    - name: POSTGRES_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-credentials
-          key: keycloak-admin-password
-
