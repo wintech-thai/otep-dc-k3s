@@ -1,4 +1,0 @@
----
-nifikop:
-  rbacEnable: true
-  namespaces: [ 'nifikop', 'nifi-v2' ]
