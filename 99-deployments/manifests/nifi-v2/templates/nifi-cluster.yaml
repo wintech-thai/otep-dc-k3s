@@ -3,9 +3,7 @@ kind: NifiCluster
 metadata:
   name: nifi
 spec:
-  replicas: 1
-
-  nodeConfig:
+  nodeConfigs:
     - id: node
       nodeCount: 1
 
@@ -26,20 +24,3 @@ spec:
       - name: http
         type: http
         containerPort: 8080
-
-  storageConfigs:
-    - name: flowfile
-      mountPath: /opt/nifi/nifi-current/flowfile_repository
-      pvcSpec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 5Gi
-
-    - name: content
-      mountPath: /opt/nifi/nifi-current/content_repository
-      pvcSpec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 10Gi
