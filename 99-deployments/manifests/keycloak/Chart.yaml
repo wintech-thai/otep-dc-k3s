@@ -6,6 +6,6 @@ description: A Helm chart wrapper for keycloak
 
 dependencies:
   - name: keycloak
-    version: "24.2.2"
+    version: "25.2.0"
     repository: "https://charts.bitnami.com/bitnami"
     condition: keycloak.enabled

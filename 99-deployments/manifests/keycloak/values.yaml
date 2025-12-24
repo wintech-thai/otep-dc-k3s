@@ -14,11 +14,6 @@ keycloak:
       ephemeral-storage: 50Mi
       memory: 512Mi
 
-  #auth:
-  #  adminUser: "admin"
-  #  existingSecret: "keycloak-credentials"
-  #  passwordSecretKey: "keycloak-admin-password"
-
   image:
     repository: bitnamilegacy/keycloak
 
