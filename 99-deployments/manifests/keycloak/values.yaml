@@ -41,9 +41,22 @@ keycloak:
     runAsUser: 0
     runAsNonRoot: false
 
+  extraEnvVars:
+    - name: KC_PROXY
+      value: edge
+
+    - name: KC_HOSTNAME
+      value: keycloak.otep.triple-t.co
+    
+    - name: KC_HOSTNAME_STRICT
+      value: "false"
+
   extraEnv: |
     - name: KEYCLOAK_LOGLEVEL
       value: DEBUG
+
+    - name: PROXY_ADDRESS_FORWARDING
+      value: "true"
 
     - name: KEYCLOAK_USER
       valueFrom:
