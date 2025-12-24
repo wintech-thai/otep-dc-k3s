@@ -19,6 +19,10 @@ keycloak:
     existingSecret: "keycloak-credentials"
     passwordSecretKey: "keycloak-admin-password"
 
+  image:
+    repository: bitnamilegacy/postgresql
+    #tag: "11.14.0"
+
   postgresql:
     enabled: true  
     auth:
