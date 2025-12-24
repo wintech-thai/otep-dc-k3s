@@ -25,9 +25,9 @@ keycloak:
 
   postgresql:
     enabled: true  
-    auth:
-      username: "bn_keycloak"
-      password: "bn_keycloak" #Do not change (If need to change, must remove the PVC)
+    #auth:
+    #  username: "bn_keycloak"
+    #  password: "bn_keycloak" #Do not change (If need to change, must remove the PVC)
     persistence:
       size: 10Gi
     image:
