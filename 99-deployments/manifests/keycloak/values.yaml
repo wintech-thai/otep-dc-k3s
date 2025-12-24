@@ -21,7 +21,6 @@ keycloak:
 
   image:
     repository: bitnamilegacy/keycloak
-    #tag: "11.14.0"
 
   postgresql:
     enabled: true  
@@ -32,7 +31,11 @@ keycloak:
       size: 10Gi
     image:
       repository: bitnamilegacy/postgresql
-      tag: "11.14.0"
+
+  auth:
+    adminUser: "admin"
+    existingSecret: "keycloak-credentials"
+    passwordSecretKey: "keycloak-admin-password"
 
   securityContext:
     runAsUser: 0
@@ -48,11 +51,18 @@ keycloak:
     - name: KEYCLOAK_USER
       valueFrom:
         secretKeyRef:
-          name: keycloak-admin
-          key: keycloak-user
+          name: keycloak-credentials
+          key: keycloak-admin-user
 
     - name: KEYCLOAK_PASSWORD
       valueFrom:
         secretKeyRef:
-          name: keycloak-admin
-          key: keycloak-password
+          name: keycloak-credentials
+          key: keycloak-admin-password
+
+    - name: POSTGRES_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-credentials
+          key: keycloak-admin-password
+
