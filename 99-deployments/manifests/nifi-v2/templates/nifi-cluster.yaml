@@ -5,6 +5,15 @@ metadata:
 spec:
   service:
     headlessEnabled: true
+    annotations:
+      tyty: ytyt
+    labels:
+      tete: titi  
+  pod:
+    annotations:
+      toto: tata
+    labels:
+      titi: tutu
   zkAddress: 'zookeepercluster-client.zookeeper:2181'
   zkPath: '/simplenifi'
   clusterImage: 'apache/nifi:1.11.3'
@@ -17,18 +26,24 @@ spec:
           node-annotation: "node-annotation-value"
         labels:
           node-label: "node-label-value"
-      #externalVolumeConfigs:
-      #  - name: example-volume
-      #    mountPath: "/opt/nifi/example"
-      #    secret:
-      #      secretName: "raw-controller"
+      externalVolumeConfigs:
+        - name: example-volume
+          mountPath: "/opt/nifi/example"
+          secret:
+            secretName: "raw-controller"
       storageConfigs:
         - mountPath: '/opt/nifi/nifi-current/logs'
           name: logs
+          # Metadata to attach to the PVC that gets created
+          metadata:
+            labels:
+              my-label: my-value
+            annotations:
+              my-annotation: my-value
           pvcSpec:
             accessModes:
               - ReadWriteOnce
-            storageClassName: 'local-path'
+            storageClassName: 'standard'
             resources:
               requests:
                 storage: 10Gi
@@ -43,8 +58,8 @@ spec:
   nodes:
     - id: 1
       nodeConfigGroup: 'default_group'
-    #- id: 2
-    #  nodeConfigGroup: 'default_group'
+    - id: 2
+      nodeConfigGroup: 'default_group'
   propagateLabels: true
   nifiClusterTaskSpec:
     retryDurationMinutes: 10
@@ -59,3 +74,4 @@ spec:
       - type: 's2s'
         name: 's2s'
         containerPort: 10000
+
