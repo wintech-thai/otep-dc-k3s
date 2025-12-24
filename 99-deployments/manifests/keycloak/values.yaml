@@ -1,0 +1,45 @@
+envAlias: production
+domain: keycloak.rtarf-prod.its-software-services.com
+
+keycloak:
+  enabled: true
+  fullnameOverride: keycloak
+
+  resources:
+    limits:
+      cpu: 1
+      ephemeral-storage: 2Gi
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      ephemeral-storage: 50Mi
+      memory: 512Mi
+
+  auth:
+    adminUser: "admin"
+    existingSecret: "keycloak-credentials"
+    passwordSecretKey: "keycloak-admin-password"
+
+  postgresql:
+    auth:
+      username: "bn_keycloak"
+      password: "bn_keycloak" #Do not change (If need to change, must remove the PVC)
+
+  extraVolumes: []
+
+  extraVolumeMounts: []
+
+  extraEnvVarsSecret: keycloak-credentials
+
+  extraEnvVars: |
+    - name: KEYCLOAK_LOG_LEVEL
+      value: DEBUG
+
+    - name: KEYCLOAK_PROXY_HEADERS
+      value: "xforwarded"
+
+    - name: POSTGRES_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-credentials
+          key: keycloak-admin-password
