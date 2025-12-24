@@ -47,3 +47,4 @@ keycloak:
         secretKeyRef:
           name: keycloak-credentials
           key: keycloak-admin-password
+
