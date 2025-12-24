@@ -14,41 +14,42 @@ keycloak:
       ephemeral-storage: 50Mi
       memory: 512Mi
 
-  auth:
-    adminUser: "admin"
-    existingSecret: "keycloak-credentials"
-    passwordSecretKey: "keycloak-admin-password"
+  #auth:
+  #  adminUser: "admin"
+  #  existingSecret: "keycloak-credentials"
+  #  passwordSecretKey: "keycloak-admin-password"
 
   image:
     repository: bitnamilegacy/keycloak
     #tag: "11.14.0"
 
   postgresql:
-    enabled: true  
-    #auth:
-    #  username: "bn_keycloak"
-    #  password: "bn_keycloak" #Do not change (If need to change, must remove the PVC)
+    enabled: true
     persistence:
       size: 10Gi
     image:
       repository: bitnamilegacy/postgresql
       tag: "11.14.0"
 
-  extraVolumes: []
+  securityContext:
+    runAsUser: 0
+    runAsNonRoot: false
 
-  extraVolumeMounts: []
-
-  extraEnvVarsSecret: keycloak-credentials
-
-  extraEnvVars: |
-    - name: KEYCLOAK_LOG_LEVEL
+  extraEnv: |
+    - name: KEYCLOAK_LOGLEVEL
       value: DEBUG
 
-    - name: KEYCLOAK_PROXY_HEADERS
-      value: "xforwarded"
+    - name: PROXY_ADDRESS_FORWARDING
+      value: "true"
 
-    - name: POSTGRES_PASSWORD
+    - name: KEYCLOAK_USER
       valueFrom:
         secretKeyRef:
-          name: keycloak-credentials
-          key: keycloak-admin-password
+          name: keycloak-admin
+          key: keycloak-user
+
+    - name: KEYCLOAK_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-admin
+          key: keycloak-password
