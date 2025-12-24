@@ -40,6 +40,9 @@ keycloak:
     - name: KC_PROXY
       value: edge
 
+    - name: PROXY_ADDRESS_FORWARDING
+      value: "true"
+
     - name: KC_HOSTNAME
       value: keycloak.otep.triple-t.co
 
