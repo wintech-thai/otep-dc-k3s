@@ -32,6 +32,11 @@ spec:
             - values-files/otep-jobs/otep-jobs-01-development-values.yaml
             - values-files/otep-jobs/otep-jobs-03-development-image-tag.yaml
 
+            # Otep-Apis
+            - values-files/otep-apis/otep-apis-00-values.yaml
+            - values-files/otep-apis/otep-apis-01-development-values.yaml
+            - values-files/otep-apis/otep-apis-03-development-image-tag.yaml
+
       destination:
         name: in-cluster
         namespace: otep-development

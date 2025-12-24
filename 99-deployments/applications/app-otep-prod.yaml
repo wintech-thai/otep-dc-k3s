@@ -31,6 +31,11 @@ spec:
             - values-files/otep-jobs/otep-jobs-00-values.yaml
             - values-files/otep-jobs/otep-jobs-01-production-values.yaml
             - values-files/otep-jobs/otep-jobs-03-production-image-tag.yaml
+
+            # Otep-Apis
+            - values-files/otep-apis/otep-apis-00-values.yaml
+            - values-files/otep-apis/otep-apis-01-production-values.yaml
+            - values-files/otep-apis/otep-apis-03-production-image-tag.yaml
       destination:
         name: in-cluster
         namespace: otep-production
