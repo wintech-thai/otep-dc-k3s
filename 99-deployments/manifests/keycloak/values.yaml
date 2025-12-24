@@ -17,54 +17,32 @@ keycloak:
   image:
     repository: bitnamilegacy/keycloak
 
-  postgresql:
-    enabled: true  
-    auth:
-      username: "bn_keycloak"
-      password: "bn_keycloak" #Do not change (If need to change, must remove the PVC)
-    persistence:
-      size: 10Gi
-    image:
-      repository: bitnamilegacy/postgresql
-
   auth:
     adminUser: "admin"
     existingSecret: "keycloak-credentials"
     passwordSecretKey: "keycloak-admin-password"
 
-  securityContext:
-    runAsUser: 0
-    runAsNonRoot: false
+  postgresql:
+    auth:
+      username: "bn_keycloak"
+      password: "bn_keycloak" #Do not change (If need to change, must remove the PVC)
+    image:
+      repository: bitnamilegacy/postgresql
 
-  extraEnvVars:
-    - name: KC_PROXY
-      value: edge
+  extraVolumes: []
 
-    - name: PROXY_ADDRESS_FORWARDING
-      value: "true"
+  extraVolumeMounts: []
 
-    - name: KC_HOSTNAME
-      value: keycloak.otep.triple-t.co
+  extraEnvVarsSecret: keycloak-credentials
 
-    - name: KC_HOSTNAME_URL
-      value: https://keycloak.otep.triple-t.co
+  extraEnvVars: |
+    - name: KEYCLOAK_LOG_LEVEL
+      value: DEBUG
 
-    - name: KC_HOSTNAME_ADMIN_URL
-      value: https://keycloak.otep.triple-t.co
+    - name: KEYCLOAK_PROXY_HEADERS
+      value: "xforwarded"
 
-    - name: KC_HOSTNAME_STRICT
-      value: "false"
-
-    - name: KC_HOSTNAME_STRICT_HTTPS
-      value: "true"  # บังคับให้สร้าง URL เป็น https เสมอ
-
-    - name: KEYCLOAK_USER
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-credentials
-          key: keycloak-admin-user
-
-    - name: KEYCLOAK_PASSWORD
+    - name: POSTGRES_PASSWORD
       valueFrom:
         secretKeyRef:
           name: keycloak-credentials

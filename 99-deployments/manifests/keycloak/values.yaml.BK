@@ -1,0 +1,71 @@
+domain: keycloak.otep.triple-t.co
+
+keycloak:
+  enabled: true
+  fullnameOverride: keycloak
+
+  resources:
+    limits:
+      cpu: 1
+      ephemeral-storage: 2Gi
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      ephemeral-storage: 50Mi
+      memory: 512Mi
+
+  image:
+    repository: bitnamilegacy/keycloak
+
+  postgresql:
+    enabled: true  
+    auth:
+      username: "bn_keycloak"
+      password: "bn_keycloak" #Do not change (If need to change, must remove the PVC)
+    persistence:
+      size: 10Gi
+    image:
+      repository: bitnamilegacy/postgresql
+
+  auth:
+    adminUser: "admin"
+    existingSecret: "keycloak-credentials"
+    passwordSecretKey: "keycloak-admin-password"
+
+  securityContext:
+    runAsUser: 0
+    runAsNonRoot: false
+
+  extraEnvVars:
+    - name: KC_PROXY
+      value: edge
+
+    - name: PROXY_ADDRESS_FORWARDING
+      value: "true"
+
+    - name: KC_HOSTNAME
+      value: keycloak.otep.triple-t.co
+
+    - name: KC_HOSTNAME_URL
+      value: https://keycloak.otep.triple-t.co
+
+    - name: KC_HOSTNAME_ADMIN_URL
+      value: https://keycloak.otep.triple-t.co
+
+    - name: KC_HOSTNAME_STRICT
+      value: "false"
+
+    - name: KC_HOSTNAME_STRICT_HTTPS
+      value: "true"  # บังคับให้สร้าง URL เป็น https เสมอ
+
+    - name: KEYCLOAK_USER
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-credentials
+          key: keycloak-admin-user
+
+    - name: KEYCLOAK_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-credentials
+          key: keycloak-admin-password
