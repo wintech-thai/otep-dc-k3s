@@ -11,7 +11,7 @@ nifi:
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     tls:
-      - secretName: nifi-sso-cert
+      - secretName: nifi-cert-sso
         hosts:
           - nifi-sso.otep.triple-t.co
 
