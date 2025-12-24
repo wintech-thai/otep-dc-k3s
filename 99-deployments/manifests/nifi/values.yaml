@@ -34,13 +34,13 @@ nifi:
       nodeCount: 1
   
     # OpenID Connect (OIDC) Authentication ถ้าใช้อันนี้ basic authen จะไม่ทำงาน
-    oidc:
-      enabled: true
-      oidc_url: "https://keycloak.otep.triple-t.co/realms/otep-prod/.well-known/openid-configuration"
-      client_id: "otep-sso"
-      client_secret: "riB5JLPYmQ0aAUoehnGKTMrayOi05oiD" # TODO : เปลี่ยนเป็น secret
-      claim_identifying_user: "preferred_username"
-      initial_admin_identity: "seubpong.mon"
+    #oidc:
+    #  enabled: true
+    #  oidc_url: "https://keycloak.otep.triple-t.co/realms/otep-prod/.well-known/openid-configuration"
+    #  client_id: "otep-sso"
+    #  client_secret: "riB5JLPYmQ0aAUoehnGKTMrayOi05oiD" # TODO : เปลี่ยนเป็น secret
+    #  claim_identifying_user: "preferred_username"
+    #  initial_admin_identity: "seubpong.mon"
 
   logging:
     levels:
