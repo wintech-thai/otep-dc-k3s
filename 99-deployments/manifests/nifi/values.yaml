@@ -34,13 +34,13 @@ nifi:
       nodeCount: 1
   
     # OpenID Connect (OIDC) Authentication ถ้าใช้อันนี้ basic authen จะไม่ทำงาน
-    oidc:
-      enabled: true
-      oidc_url: "https://keycloak.otep.triple-t.co/.well-known/openid-configuration"
-      client_id: "nifi-client"
-      client_secret: "your-client-secret-here"
-      claim_identifying_user: "preferred_username"
-      initial_admin_identity: "pjame.fb@gmail.com"
+    #oidc:
+    #  enabled: true
+    #  oidc_url: "https://keycloak.otep.triple-t.co/.well-known/openid-configuration"
+    #  client_id: "nifi-client"
+    #  client_secret: "your-client-secret-here"
+    #  claim_identifying_user: "preferred_username"
+    #  initial_admin_identity: "pjame.fb@gmail.com"
 
   resources:
     requests:
