@@ -20,7 +20,7 @@ keycloak:
     passwordSecretKey: "keycloak-admin-password"
 
   image:
-    repository: bitnamilegacy/postgresql
+    repository: bitnamilegacy/keycloak
     #tag: "11.14.0"
 
   postgresql:
