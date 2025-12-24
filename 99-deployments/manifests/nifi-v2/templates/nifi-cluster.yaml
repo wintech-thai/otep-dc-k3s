@@ -3,6 +3,8 @@ kind: NifiCluster
 metadata:
   name: simplenifi
 spec:
+  type: internal
+  clusterManager: zookeeper
   service:
     headlessEnabled: true
     annotations:
