@@ -45,8 +45,8 @@ keycloak:
     - name: KEYCLOAK_LOGLEVEL
       value: DEBUG
 
-    - name: PROXY_ADDRESS_FORWARDING
-      value: "true"
+    #- name: PROXY_ADDRESS_FORWARDING
+    #  value: "true"
 
     - name: KEYCLOAK_USER
       valueFrom:
