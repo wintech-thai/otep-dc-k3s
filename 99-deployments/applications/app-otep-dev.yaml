@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: otep-dev
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          custom: "true"
+  template:
+    metadata:
+      name: 'otep-dev'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/wintech-thai/otep-argocd-apps.git
+        targetRevision: "development" #Based on environment
+        path: '.'
+        helm:
+          ignoreMissingValueFiles: true
+          valueFiles:
+            - values-files/values-development.yaml
+
+            # Otep-Webs
+            - values-files/otep-webs/otep-webs-00-values.yaml
+            - values-files/otep-webs/otep-webs-01-development-values.yaml
+            - values-files/otep-webs/otep-webs-03-development-image-tag.yaml
+
+      destination:
+        name: in-cluster
+        namespace: otep-development
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+          - CreateNamespace=true

@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: otep-prod
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          custom: "true"
+  template:
+    metadata:
+      name: 'otep-prod'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/wintech-thai/otep-argocd-apps.git
+        targetRevision: "production" #Based on environment
+        path: '.'
+        helm:
+          ignoreMissingValueFiles: true
+          valueFiles:
+            - values-files/values-production.yaml
+
+            # Otep-Webs
+            - values-files/otep-webs/otep-webs-00-values.yaml
+            - values-files/otep-webs/otep-webs-01-production-values.yaml
+            - values-files/otep-webs/otep-webs-03-production-image-tag.yaml
+
+      destination:
+        name: in-cluster
+        namespace: otep-production
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
