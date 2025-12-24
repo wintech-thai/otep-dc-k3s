@@ -3,21 +3,10 @@ kind: NifiCluster
 metadata:
   name: nifi
 spec:
-  nodeConfigs:
-    - id: node
-      nodeCount: 1
+  type: internal
 
-  image:
-    repository: apache/nifi
-    tag: 1.25.0
-
-  security:
-    initialAdminIdentity: admin
-    authentication:
-      singleUser:
-        enabled: true
-        secretRef:
-          name: nifi-credentials
+  nodes:
+    - id: node1
 
   listenersConfig:
     internalListeners:
