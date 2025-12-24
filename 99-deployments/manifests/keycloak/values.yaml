@@ -24,7 +24,10 @@ keycloak:
     #tag: "11.14.0"
 
   postgresql:
-    enabled: true
+    enabled: true  
+    auth:
+      username: "bn_keycloak"
+      password: "bn_keycloak" #Do not change (If need to change, must remove the PVC)
     persistence:
       size: 10Gi
     image:
