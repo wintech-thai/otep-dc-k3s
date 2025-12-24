@@ -42,6 +42,12 @@ nifi:
       claim_identifying_user: "preferred_username"
       initial_admin_identity: "pjame.fb@gmail.com"
 
+    logging:
+      levels:
+        org.apache.nifi.web.security.oidc: DEBUG
+        org.apache.nifi.web.security: DEBUG
+        org.apache.nifi.authorization: DEBUG
+
   resources:
     requests:
       cpu: 200m
@@ -62,8 +68,3 @@ nifi:
       security:
         allowInsecureImages: true
 
-  logging:
-    levels:
-      org.apache.nifi.web.security.oidc: DEBUG
-      org.apache.nifi.web.security: DEBUG
-      org.apache.nifi.authorization: DEBUG
