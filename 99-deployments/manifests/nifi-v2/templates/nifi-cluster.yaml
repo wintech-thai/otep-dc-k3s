@@ -4,9 +4,19 @@ metadata:
   name: nifi
 spec:
   type: internal
+  clusterManager: kubernetes
+
+  nodeConfigGroups:
+    default:
+      image: apache/nifi:1.25.0
+      service:
+        type: ClusterIP
+      pod:
+        terminationGracePeriodSeconds: 30
 
   nodes:
     - id: 1
+      nodeConfigGroup: default
 
   listenersConfig:
     internalListeners:
