@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: nifi-v2
+  name: nifi-sso
 spec:
   generators:
   - clusters:
@@ -10,16 +10,16 @@ spec:
           custom: "true"
   template:
     metadata:
-      name: 'nifi-v2-{{name}}'
+      name: 'nifi-sso-{{name}}'
     spec:
       project: "default"
       source:
         repoURL: https://github.com/wintech-thai/otep-dc-k3s.git
         targetRevision: "{{name}}" #Based on environment
-        path: '99-deployments/manifests/nifi-v2'
+        path: '99-deployments/manifests/nifi-sso'
       destination:
         name: in-cluster
-        namespace: nifi-v2
+        namespace: nifi-sso
       syncPolicy:
         automated:
           selfHeal: true

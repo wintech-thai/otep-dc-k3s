@@ -1,0 +1,70 @@
+domain: nifi-sso.otep.triple-t.co
+
+nifi:
+  enabled: true
+  nameOverride: nifi-sso
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hostName: nifi-sso.otep.triple-t.co
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    tls:
+      - secretName: nifi-sso-cert
+        hosts:
+          - nifi-sso.otep.triple-t.co
+
+  volumeClaims:
+    config:
+      storageClass: "local-path"
+    state:
+      storageClass: "local-path"
+    flowfile:
+      storageClass: "local-path"
+    content:
+      storageClass: "local-path"
+    provenance:
+      storageClass: "local-path"
+    logs:
+      storageClass: "local-path"
+
+  global:
+    nifi:
+      nodeCount: 1
+  
+    # OpenID Connect (OIDC) Authentication ถ้าใช้อันนี้ basic authen จะไม่ทำงาน
+    oidc:
+      enabled: true
+      oidc_url: "https://keycloak.otep.triple-t.co/realms/otep-prod/.well-known/openid-configuration"
+      client_id: "otep-sso"
+      client_secret: "riB5JLPYmQ0aAUoehnGKTMrayOi05oiD" # TODO : เปลี่ยนเป็น secret
+      claim_identifying_user: "preferred_username"
+      initial_admin_identity: "seubpong.mon"
+
+  logging:
+    levels:
+      org.apache.nifi.web.security.oidc: DEBUG
+      org.apache.nifi.web.security: DEBUG
+      org.apache.nifi.authorization: DEBUG
+
+  resources:
+    requests:
+      cpu: 200m
+      memory: 1Gi
+
+  jvmHeap:
+    min: 256m
+    max: 512m
+
+  zookeeper:
+    image:
+      registry: docker.io
+      repository: bitnamilegacy/zookeeper
+      tag: 3.9.3
+      pullPolicy: IfNotPresent
+
+    global:
+      security:
+        allowInsecureImages: true
+
