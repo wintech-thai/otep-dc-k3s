@@ -1,6 +1,7 @@
 domain: grafana-k8s.otep.triple-t.co
 
 kube-prometheus-stack:
+  enabled: false
   grafana:
     env:
       KC_ENDPOINT: "https://keycloak.otep.triple-t.co/realms/otep-prod/protocol/openid-connect"
