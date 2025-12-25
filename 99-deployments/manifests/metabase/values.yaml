@@ -34,12 +34,8 @@ metabase-k8s:
       value: "postgresql"
     - name: MB_DB_USER
       value: "postgres"
-    - name: MB_DB_PASS
-      valueFrom:
-        secretKeyRef:
-          name: postgres-secret
-          key: adminPasswordKey
-      value: dummy
+    - name: MB_DB_PASS #รอ helm เวอร์ชันที่ support secretKeys
+      value: yOYXkouCodbowXw13a
 
 ### pgSQL ###
 postgresql:
