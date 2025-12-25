@@ -11,7 +11,3 @@ minio:
     image:
       registry: docker.io
       repository: bitnamilegacy/minio-object-browser
-  ingress:
-    enabled: true
-    ingressClassName: "nginx"
-    hostname: minio-console.otep.triple-t.co
