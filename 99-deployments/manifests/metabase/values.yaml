@@ -15,15 +15,16 @@ metabase-k8s:
     storageClass: "local-path"
     size: 10Gi
 
-  env:
-    MB_DB_TYPE: postgres
-    MB_DB_DBNAME: metabase
-    MB_DB_PORT: "5432"
-    MB_DB_HOST: postgresql
-    MB_DB_USER: postgres
-  envFrom:
-    - secretRef:
-        name: postgres-secret
+  metabase:
+    env:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase
+      MB_DB_PORT: "5432"
+      MB_DB_HOST: postgresql
+      MB_DB_USER: postgres
+    envFrom:
+      - secretRef:
+          name: postgres-secret
 
 ### pgSQL ###
 postgresql:
