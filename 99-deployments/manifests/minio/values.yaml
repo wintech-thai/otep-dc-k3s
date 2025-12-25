@@ -5,5 +5,5 @@ minio:
   enabled: true
   nameOverride: minio
   image:
-    registry: docker.io/bitnamilegacy
-    repository: bitnami/minio
+    registry: docker.io
+    repository: bitnamilegacy/minio
