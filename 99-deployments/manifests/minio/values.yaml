@@ -8,7 +8,14 @@ minio:
   image:
     registry: docker.io
     repository: bitnamilegacy/minio
+  ingress:
+    enabled: true
+    hostname: minio-console.otep.triple-t.co
+
   console:
     image:
       registry: docker.io
       repository: bitnamilegacy/minio-object-browser
+    ingress:
+      enabled: true
+      hostname: minio-api.otep.triple-t.co
