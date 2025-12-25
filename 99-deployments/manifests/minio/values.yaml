@@ -1,5 +1,6 @@
 ---
-domain: minio-console.otep.triple-t.co
+domainConsole: minio-console.otep.triple-t.co
+domain: minio-api.otep.triple-t.co
 
 minio:
   enabled: true
