@@ -20,4 +20,4 @@ spec:
               service:
                 name: metabase
                 port:
-                  number: metabase
+                  number: 3000
