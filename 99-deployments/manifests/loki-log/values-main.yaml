@@ -2,10 +2,29 @@ domain: grafana-loki.otep.triple-t.co
 
 loki-stack:
   grafana:
+    env:
+      KC_ENDPOINT: "https://keycloak.otep.triple-t.co/realms/otep-prod/protocol/openid-connect"
+    
+    # envFromSecrets:
+    #   - name: grafana-loki-keycloak
+    #     optional: false
+    
     grafana.ini:
       server:
         root_url: grafana-loki.otep.triple-t.co
-    grafana.ini:
-      server:
-        root_url: https://grafana-loki.otep.triple-t.co
         domain: grafana-loki.otep.triple-t.co
+      auth.generic_oauth:
+        enabled: true
+        name: "SSO"
+        client_id: "loki-prod"
+        client_secret: "zRhyhgLqL4jz871JqxgfblSrLlF7ON2G"
+        # client_secret: ${KC_CLIENT_SECRET}
+        scopes: profile email openid roles
+        auth_url: "${KC_ENDPOINT}/auth"
+        token_url: "${KC_ENDPOINT}/token"
+        api_url: "${KC_ENDPOINT}/userinfo"
+        signout_redirect_url: https://grafana-loki.otep.triple-t.co/login
+        role_attribute_strict: true
+        role_attribute_path: to_string('Editor')
+        allow_assign_grafana_admin: true
+        name_attribute_path: preferred_username
