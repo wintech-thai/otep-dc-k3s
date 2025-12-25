@@ -41,10 +41,6 @@ metabase-k8s:
           key: adminPasswordKey
           name: postgres-secret
 
-    envFrom:
-      - secretRef:
-          name: postgres-secret
-
 ### pgSQL ###
 postgresql:
   enabled: true
