@@ -14,3 +14,28 @@ metabase-k8s:
   persistence:
     storageClass: "local-path"
     size: 10Gi
+
+### pgSQL ###
+postgresql:
+  enabled: true
+  fullnameOverride: postgresql
+  auth:
+    database: metabase
+    existingSecret: postgres-secret
+    secretKeys:
+      adminPasswordKey: adminPasswordKey
+  primary:
+    persistence:
+      size: 15Gi
+    resources:
+      requests:
+        memory: "1Gi"
+        cpu: "300m"
+      limits:
+        memory: "2Gi"
+        cpu: "1"
+
+  image:
+    registry: asia-southeast1-docker.pkg.dev
+    repository: its-artifact-commons/utils/postgresql
+    tag: "v16.2.0-2"
