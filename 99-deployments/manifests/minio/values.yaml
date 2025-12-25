@@ -4,3 +4,6 @@ domain: minio-console.otep.triple-t.co
 minio:
   enabled: true
   nameOverride: minio
+  image:
+    registry: docker.io/bitnamilegacy
+    repository: bitnami/minio
