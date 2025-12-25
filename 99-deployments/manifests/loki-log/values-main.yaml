@@ -11,7 +11,7 @@ loki-stack:
     
     grafana.ini:
       server:
-        root_url: grafana-loki.otep.triple-t.co
+        root_url: https://grafana-loki.otep.triple-t.co
         domain: grafana-loki.otep.triple-t.co
       auth.generic_oauth:
         enabled: true
