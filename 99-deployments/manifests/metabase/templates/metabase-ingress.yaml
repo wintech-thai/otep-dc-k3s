@@ -18,6 +18,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: metabase-main
+                name: metabase
                 port:
-                  number: 80
+                  number: metabase
