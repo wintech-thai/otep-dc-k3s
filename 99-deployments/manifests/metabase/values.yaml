@@ -38,8 +38,8 @@ metabase-k8s:
     - name: MB_DB_PASS
       valueFrom:
         secretKeyRef:
-          key: adminPasswordKey
           name: postgres-secret
+          key: adminPasswordKey
 
 ### pgSQL ###
 postgresql:
