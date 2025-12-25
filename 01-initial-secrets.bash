@@ -31,3 +31,5 @@ done
 export $(xargs <.env)
 
 cp ${TMP_FILE} ${DST_FILE}
+
+kubectl create secret generic gcp-sa-secret --from-file=$HOME/secrets/sa.json=sa.json
