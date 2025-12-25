@@ -4,9 +4,9 @@ kube-prometheus-stack:
   grafana:
     env:
       KC_ENDPOINT: "https://keycloak.otep.triple-t.co/realms/otep-prod/protocol/openid-connect"
-    envFromSecrets:
-      - name: grafana-k8s-keycloak
-        optional: false
+    # envFromSecrets:
+    #   - name: grafana-k8s-keycloak
+    #     optional: false
     grafana.ini:
       server:
         root_url: https://grafana-k8s.otep.triple-t.co
