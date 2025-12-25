@@ -33,9 +33,9 @@ metabase-k8s:
     - name: MB_DB_HOST
       value: "postgresql"
     - name: MB_DB_USER
-      value: "postgres"
+      value: "bn_metabase"
     - name: MB_DB_PASS #รอ helm เวอร์ชันที่ support secretKeys
-      value: yOYXkouCodbowXw13a
+      value: bn_metabase
 
 ### pgSQL ###
 postgresql:
@@ -43,9 +43,13 @@ postgresql:
   fullnameOverride: postgresql
   auth:
     database: metabase
-    existingSecret: postgres-secret
-    secretKeys:
-      adminPasswordKey: adminPasswordKey
+
+    username: "bn_metabase"
+    password: "bn_metabase"
+
+    #existingSecret: postgres-secret
+    #secretKeys:
+    #  adminPasswordKey: adminPasswordKey
   primary:
     persistence:
       size: 15Gi
@@ -56,7 +60,6 @@ postgresql:
       limits:
         memory: "2Gi"
         cpu: "1"
-
   image:
     registry: asia-southeast1-docker.pkg.dev
     repository: its-artifact-commons/utils/postgresql
