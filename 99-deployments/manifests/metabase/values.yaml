@@ -39,6 +39,7 @@ metabase-k8s:
         secretKeyRef:
           name: postgres-secret
           key: adminPasswordKey
+      value: dummy
 
 ### pgSQL ###
 postgresql:
