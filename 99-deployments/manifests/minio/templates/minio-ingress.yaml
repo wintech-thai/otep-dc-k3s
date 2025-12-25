@@ -20,4 +20,4 @@ spec:
               service:
                 name: minio
                 port:
-                  number: 3000
+                  number: 9000
