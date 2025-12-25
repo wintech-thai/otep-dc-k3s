@@ -10,3 +10,7 @@ metabase-k8s:
 
   istio:
     enabled: false
+
+  persistence:
+    storageClass: "local-path"
+    size: 10Gi
