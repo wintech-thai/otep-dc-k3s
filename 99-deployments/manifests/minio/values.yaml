@@ -10,7 +10,7 @@ minio:
     repository: bitnamilegacy/minio
   ingress:
     enabled: true
-    hostname: minio-console.otep.triple-t.co
+    hostname: minio-api.otep.triple-t.co
 
   console:
     image:
@@ -18,4 +18,4 @@ minio:
       repository: bitnamilegacy/minio-object-browser
     ingress:
       enabled: true
-      hostname: minio-api.otep.triple-t.co
+      hostname: minio-console.otep.triple-t.co
