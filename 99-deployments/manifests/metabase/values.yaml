@@ -19,8 +19,8 @@ metabase-k8s:
     env:
     - name: MB_PLUGINS_DIR
       value: "/plugins"
-    - name: MB_DB_FILE
-      value: "/metabase-data/metabase.db"
+    #- name: MB_DB_FILE
+    #  value: "/metabase-data/metabase.db"
     - name: MB_SITE_URL
       value: "https://istio_HOST/istio_PATH"
 
