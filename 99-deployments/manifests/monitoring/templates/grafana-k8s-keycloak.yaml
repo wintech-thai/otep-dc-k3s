@@ -1,0 +1,18 @@
+# apiVersion: external-secrets.io/v1alpha1
+# kind: ExternalSecret
+# metadata:
+#   name: grafana-k8s-keycloak
+# spec:
+#   refreshInterval: 10m0s       # rate SecretManager pulls GCPSM
+#   secretStoreRef:
+#     kind: ClusterSecretStore
+#     name: gcp-secret-store     # name of the SecretStore (or kind specified)
+#   target:
+#     name: grafana-k8s-keycloak  # name of the k8s Secret to be created
+#     creationPolicy: Owner
+#   data:
+#   - secretKey: "KC_CLIENT_SECRET"
+#     remoteRef:
+#       key: initial-secret
+#       version: latest
+#       property: KC_CLIENT_SECRET

@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring-crds
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: monitoring
+  project: default
+  source:
+    repoURL: https://github.com/wintech-thai/otep-dc-k3s.git
+    path: '99-deployments/manifests/monitoring'
+    targetRevision: kube-prometheus-stack-48.3.1 #Version should match Chart.yaml in "monitoring" folder
+    directory:
+      recurse: true
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true
+    automated:
+      prune: true
+      selfHeal: true
