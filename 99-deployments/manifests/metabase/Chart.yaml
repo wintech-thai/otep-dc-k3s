@@ -1,0 +1,12 @@
+apiVersion: v2
+name: helm-metabase 
+version: 1.0.0
+appVersion: 1.23.0
+description: A Helm chart wrapper for Metabase 
+
+dependencies:
+  - name: "metabase-k8s"
+    alias: metabase-k8s
+    condition: metabase-k8s.enabled
+    repository: "https://arconixforge.github.io/metabase-k8s/"
+    version: "1.0.0"

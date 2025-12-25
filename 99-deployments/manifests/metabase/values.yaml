@@ -1,0 +1,12 @@
+domain: metabase.otep.triple-t.co
+
+### Metabase ###
+metabase-k8s:
+  enabled: true
+  nameOverride: metabase
+
+  ingress:
+    enabled: false
+
+  istio:
+    enabled: false
