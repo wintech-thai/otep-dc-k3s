@@ -17,11 +17,24 @@ metabase-k8s:
 
   metabase:
     env:
-      MB_DB_TYPE: postgres
-      MB_DB_DBNAME: metabase
-      MB_DB_PORT: "5432"
-      MB_DB_HOST: postgresql
-      MB_DB_USER: postgres
+    - name: MB_PLUGINS_DIR
+      value: "/plugins"
+    - name: MB_DB_FILE
+      value: "/metabase-data/metabase.db"
+    - name: MB_SITE_URL
+      value: "https://istio_HOST/istio_PATH"
+
+    - name: MB_DB_TYPE
+      value: "postgres"
+    - name: MB_DB_DBNAME
+      value: "metabase"
+    - name: MB_DB_PORT
+      value: "5432"
+    - name: MB_DB_HOST
+      value: "postgresql"
+    - name: MB_DB_USER
+      value: "postgres"
+
     envFrom:
       - secretRef:
           name: postgres-secret
