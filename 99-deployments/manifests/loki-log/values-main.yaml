@@ -5,10 +5,10 @@ loki-stack:
     env:
       KC_ENDPOINT: "https://keycloak.otep.triple-t.co/realms/otep-prod/protocol/openid-connect"
     
-    # envFromSecrets:
-    #   - name: grafana-loki-keycloak
-    #     optional: false
-    
+      envFromSecrets:
+       - name: grafana-loki-sso
+         optional: false
+  
     grafana.ini:
       server:
         root_url: https://grafana-loki.otep.triple-t.co
@@ -16,9 +16,8 @@ loki-stack:
       auth.generic_oauth:
         enabled: true
         name: "SSO"
-        client_id: "loki-prod"
-        client_secret: "zRhyhgLqL4jz871JqxgfblSrLlF7ON2G"
-        # client_secret: ${KC_CLIENT_SECRET}
+        client_id: "otep-sso"
+        client_secret: ${SSO_CLIENT_SECRET}
         scopes: profile email openid roles
         auth_url: "${KC_ENDPOINT}/auth"
         token_url: "${KC_ENDPOINT}/token"
