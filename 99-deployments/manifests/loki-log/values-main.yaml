@@ -5,9 +5,9 @@ loki-stack:
     env:
       KC_ENDPOINT: "https://keycloak.otep.triple-t.co/realms/otep-prod/protocol/openid-connect"
     
-      envFromSecrets:
-       - name: grafana-loki-sso
-         optional: false
+    envFromSecrets:
+      - name: grafana-loki-sso
+        optional: false
   
     grafana.ini:
       server:
