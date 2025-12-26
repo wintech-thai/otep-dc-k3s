@@ -14,6 +14,6 @@ minio:
       repository: bitnamilegacy/minio-object-browser
 
   auth:
-    existingSecret: keycloak-credentials
+    existingSecret: minio-credentials
     rootUserSecretKey: MINIO_ROOT_USER
     rootPasswordSecretKey: MINIO_ROOT_PASSWORD
