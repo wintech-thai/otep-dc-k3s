@@ -18,6 +18,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: pgweb-main-xxxx # ปิดไปก่อนเพื่อ security, ให้ลบ xxxx ออกเมื่อต้องการใช้งานจริง, ปิดเมื่อเลิกใช้ด้วยนะ
+                name: pgweb-main #-xxxx # ปิดไปก่อนเพื่อ security, ให้ลบ xxxx ออกเมื่อต้องการใช้งานจริง, ปิดเมื่อเลิกใช้ด้วยนะ
                 port:
                   number: 80
