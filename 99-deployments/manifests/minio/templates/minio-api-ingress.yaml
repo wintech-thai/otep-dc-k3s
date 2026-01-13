@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minio-api-ing
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+spec:
+  tls:
+    - hosts:
+      - {{ .Values.domainApi }}
+      secretName: minio-api-cert
+  rules:
+    - host: {{ .Values.domainApi }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: minio-main
+                port:
+                  number: 9000
