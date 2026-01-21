@@ -19,8 +19,7 @@ metabase-k8s:
     env:
     - name: MB_PLUGINS_DIR
       value: "/plugins"
-    #- name: MB_DB_FILE
-    #  value: "/metabase-data/metabase.db"
+
     - name: MB_SITE_URL
       value: "https://istio_HOST/istio_PATH"
 
@@ -36,6 +35,12 @@ metabase-k8s:
       value: "bn_metabase"
     - name: MB_DB_PASS #รอ helm เวอร์ชันที่ support secretKeys
       value: bn_metabase
+
+    - name: MB_PREMIUM_EMBEDDING_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: mb-secret
+          key: MB_PREMIUM_EMBEDDING_TOKEN
 
 ### pgSQL ###
 postgresql:
