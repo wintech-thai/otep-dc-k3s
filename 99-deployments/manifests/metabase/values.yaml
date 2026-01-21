@@ -17,7 +17,7 @@ metabase-k8s:
 
   image:
     repository: metabase/metabase-enterprise
-    tag: v0.53.4.1
+    tag: v1.53.4.1
 
   metabase:
     env:
@@ -40,11 +40,11 @@ metabase-k8s:
     - name: MB_DB_PASS #รอ helm เวอร์ชันที่ support secretKeys
       value: bn_metabase
 
-    - name: MB_PREMIUM_EMBEDDING_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: mb-secret-license
-          key: MB_PREMIUM_EMBEDDING_TOKEN
+    #- name: MB_PREMIUM_EMBEDDING_TOKEN
+    #  valueFrom:
+    #    secretKeyRef:
+    #      name: mb-secret-license
+    #      key: MB_PREMIUM_EMBEDDING_TOKEN
 
 ### pgSQL ###
 postgresql:
