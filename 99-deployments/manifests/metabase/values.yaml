@@ -15,6 +15,10 @@ metabase-k8s:
     storageClass: "local-path"
     size: 10Gi
 
+  image:
+    repository: metabase/metabase-enterprise
+    tag: v0.53.4.1
+
   metabase:
     env:
     - name: MB_PLUGINS_DIR
